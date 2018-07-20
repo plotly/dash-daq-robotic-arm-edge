@@ -233,7 +233,8 @@ app.layout = html.Div(
                       "height": "75%",
                       "width": "75%",
                       "marginLeft": "11%",
-                      "marginTop": "3%"}
+                      "marginTop": "3%",
+                      "box-shadow":"16px 10px 8px 0px #506784"}
         ),
         html.Div(
             [
