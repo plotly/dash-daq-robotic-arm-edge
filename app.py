@@ -117,7 +117,7 @@ app.layout = html.Div(
             ], style={"display": "flex",
                       "justify-content": "center",
                       "align-items": "center",
-                      "border": "20px solid black",
+                      "border": "20px solid #2a3f5f",
                       "border-radius": "150px",
                       "height":"65%",
                       "width":"75%",
