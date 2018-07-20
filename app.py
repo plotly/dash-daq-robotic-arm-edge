@@ -23,7 +23,8 @@ external_css = ["https://codepen.io/chriddyp/pen/bWLwgP.css",
                 "https://cdn.rawgit.com/matthewchan15/dash-css-style-sheets/adf070fa/banner.css",
                 "https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i",
                 "https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i",
-                "https://rawgit.com/matthewchan15/dash-sparki-icon-sheet/master/css/sparkibot.css"]
+                "https://rawgit.com/matthewchan15/dash-sparki-icon-sheet/master/css/sparkibot.css",
+                "https://rawgit.com/matthewchan15/dash-css-style-sheets/master/pop-up.css"]
 
 
 for css in external_css:
@@ -53,14 +54,14 @@ app.layout = html.Div(
             [
                 html.Div(
                     id="dash-daq-remote-banner",
-                    style={"position":"absolute",
-                           "top":"138px",
-                           "right":"-21px"},
+                    style={"position": "absolute",
+                           "top": "111px",
+                           "right": "-45px"},
                     children=[
                         html.A(
                             html.Img(
                                 src="https://s3-us-west-1.amazonaws.com/plotly-tutorials/excel/dash-daq/dash-daq-logo-stripe.png",
-                                style={"width":"50%"}
+                                style={"width": "45%"}
                             ),
                             href="http://www.dashdaq.io"
                         )
@@ -68,62 +69,242 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                        daq.Joystick(
-                            id="LED-base-move",
-                            force=0,
-                            className="three columns", style={"paddingTop":"3%"}
+                        html.Div(
+                            [
+                                html.H6("LED On",
+                                        style={"textAlign": "center",
+                                               "font-size": "1.1rem",
+                                               "position": "relative",
+                                               "right": "19px"}
+                                        ),
+                                html.Div(
+                                    [
+                                        html.H6("Base Left",
+                                                style={"textAlign": "center",
+                                                       "font-size": "1.1rem",
+                                                       "paddingLeft": "14%",
+                                                       "top": "30px",
+                                                       "paddingTop": "8%"},
+                                                className="three columns"
+                                                ),
+                                        daq.Joystick(
+                                            id="LED-base-move",
+                                            force=0,
+                                            className="four columns"
+                                        ),
+                                        html.H6("Base Right",
+                                                style={"textAlign": "center",
+                                                       "font-size": "1.1rem",
+                                                       "left": "9px",
+                                                       "top": "24px",
+                                                       "width": "9%",
+                                                       "position": "relative"},
+                                                className="three columns"
+                                                )
+                                    ], className="row"
+                                ),
+                                html.H6("LED Off",
+                                        style={"textAlign": "center",
+                                               "font-size": "1.1rem",
+                                               "position": "relative",
+                                               "right": "21px"}
+                                        ),
+
+                            ],  className="six columns", style={"paddingTop": "3%"}
                         ),
                         html.Div(
                             [
-                                dcc.Textarea(
-                                    id="serial-box",
-                                    placeholder='Enter a value...',
-                                    value='This is a TextArea component',
-                                    style={'width': '98%',
-                                           "height":"133px"}
+                                html.H6("Wrist Up",
+                                        style={"textAlign": "center",
+                                               "font-size": "1.1rem",
+                                               "position": "relative",
+                                               "right": "20px"}
+                                        ),
+                                html.Div(
+                                    [
+                                        html.H6("Open Grip",
+                                                style={"textAlign": "center",
+                                                       "font-size": "1.1rem",
+                                                       "paddingLeft": "13%",
+                                                       "paddingTop": "8.5%"},
+                                                className="three columns"
+                                                ),
+                                        daq.Joystick(
+                                            id="wrist-grip-move",
+                                            force=0,
+                                            className="four columns"
+                                        ),
+                                        html.H6("Close Grip",
+                                                style={"textAlign": "center",
+                                                       "font-size": "1.1rem",
+                                                       "left": "6px",
+                                                       "top": "26.5px",
+                                                       "width": "9%",
+                                                       "position": "relative"
+                                                       },
+                                                className="three columns"
+                                                )
+                                    ], className="row"
+                                ),
+                                html.H6("Wrist Down",
+                                        style={"textAlign": "center",
+                                               "font-size": "1.1rem",
+                                               "position": "relative",
+                                               "right": "19px"}
+                                        ),
+
+                            ],  className="six columns", style={"paddingTop": "3%"}
+                        ),
+                    ], className="row", style={"width": "86%",
+                                               "top": "30%",
+                                               "right": "4%",
+                                               "position": "absolute"}
+                ),
+                html.Div(
+                    [
+                        html.Div(
+                            [
+                                daq.Indicator(
+                                    id="LED-state",
+                                    label="LED ON/OFF",
+                                    value=True,
+                                    className="two columns",
+                                    color="#EF553B",
+                                    style={"textAlign": "center",
+                                           "marginLeft": "12%",
+                                           "paddingTop": "13%",
+                                           "marginRight": "6%"}
                                 ),
                                 html.Div(
                                     [
-                                        daq.Indicator(
-                                            id="LED-state",
-                                            label="LED ON/OFF",
-                                            value=True,
-                                            className="four columns",
-                                            color="#EF553B",
-                                            style={"textAlign":"center",
-                                                   "marginLeft":"15%"}
+                                        html.H6("Elbow Up",
+                                                style={"textAlign": "center",
+                                                       "font-size": "1.1rem",
+                                                       "position": "relative",
+                                                       "left": "19px"}
+                                                ),
+                                        html.Div(
+                                            [
+                                                html.H6("Shoulder Up",
+                                                        style={"textAlign": "center",
+                                                               "font-size": "1.1rem",
+                                                               "position": "relative",
+                                                               "top": "21px",
+                                                               "width": "26%",
+                                                               "left": "-6px"},
+                                                        className="three columns"
+                                                        ),
+                                                daq.Joystick(
+                                                    id="elbow-shoulder-move",
+                                                    force=0,
+                                                    className="four columns"
+                                                ),
+                                                html.H6("Shoulder Down",
+                                                        style={"textAlign": "center",
+                                                               "font-size": "1.1rem",
+                                                               "position": "relative",
+                                                               "top": "22px",
+                                                               "left": "54px",
+                                                               "width": "26%"},
+                                                        className="three columns"
+                                                        )
+                                            ], className="row"
                                         ),
-                                        daq.Joystick(
-                                            id="elbow-shoulder-move",
-                                            force=0,
-                                            className="six columns"
-                                        )
-                                    ], className="row", style={"marginTop":"5%"}
+                                        html.H6("Elbow Down",
+                                                style={"textAlign": "center",
+                                                       "font-size": "1.1rem",
+                                                       "left": "19px",
+                                                       "position": "relative"}
+                                                ),
+
+                                    ],  className="six columns", style={"paddingTop": "3%"}
                                 )
-                            ], className="six columns"
-                        ),
-                        html.Div(
-                            [
-                                daq.Joystick(
-                            id="wrist-grip-move",
-                            force=0
-                        ),
-                            ], className="three columns", style={"paddingTop":"3%"}
+                            ], className="row", style={"marginTop": "3%",
+                                                       "position": "absolute",
+                                                       "left": "32.5%"}
                         )
-                    ], className="row", style={ "width":"90%",
-                                                "marginLeft":"1%",
-                                                "paddingTop":"16%"}
-                    ),
+                    ]
+                ),
             ], style={"display": "flex",
                       "justify-content": "center",
                       "align-items": "center",
-                      "border": "20px solid #2a3f5f",
+                      "border": "11px solid #A2B1C6",
                       "border-radius": "150px",
-                      "height":"65%",
-                      "width":"75%",
-                      "marginLeft":"9%",
-                      "marginRight":"9%",
-                      "marginTop":"5.5%"}
+                      "height": "75%",
+                      "width": "75%",
+                      "marginLeft": "11%",
+                      "marginTop": "3%"}
+        ),
+        html.Div(
+            [
+
+                html.A(
+                    href="#open-modal",
+                    children=[
+                        html.Div(
+                            [
+                                html.H1(
+                                    " "
+                                )
+                            ], style={"width": "30px",
+                                      "height": "7px",
+                                      "background-color": "#A2B1C6",
+                                      "border": "1px solid #A2B1C6",
+                                      "border-radius": "20px",
+                                                          "position": "absolute",
+                                                          "top": "264px",
+                                                          "left": "345px"}
+                        )
+                    ]
+                ),
+                html.Div(
+                    id="open-modal",
+                    className="modal-window",
+                    style={
+                        "background-color": "rgba(162,177,198, 0.75)"},
+                    children=[
+                        html.A(
+                            "Close",
+                            href="#modal-close",
+                            title="Close",
+                            className="modal-close",
+                            style={"font-size": "125%"}
+                        ),
+                        html.Div(
+                            style={"border": "2px solid #2a3f5f",
+                                   "border-radius": "10px",
+                                   "color": "#2a3f5f"},
+                            children=[
+                                html.H1(
+                                    "Read Me",
+                                    style={"textAlign": "left",
+                                           "text-decoration": "underline",
+                                           "font-size": "2em"}
+                                ),
+                                html.H6(
+                                    "This application was made to " +
+                                    "control the Robotic Arm Edge using " +
+                                    "the USB interface package. This" +
+                                    " application can be controlled" +
+                                    " wirelessly using WI-FI. See it " +
+                                    "in action, by clicking " +
+                                    "on the Dash DAQ logo and reading the " +
+                                    "blog post titled, '" +
+                                    "Robotic Arm Edge'."
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                html.H6(
+                    "Read Me",
+                    style={
+                        "position": "absolute",
+                        "top": "275px",
+                        "left": "339px",
+                        "font-size": "1.1rem"}
+                )
+            ]
         ),
         html.Div(
             [
@@ -214,71 +395,6 @@ def elbow_shoulder_move(angle, force):
 )
 def LED_ON_OFF(LED_color):
     return LED_color
-
-@app.callback(
-    Output("serial-box", "value"),
-    [Input("LED-base-move", "angle"),
-    Input("LED-base-move", "force"),
-    Input("elbow-shoulder-move", "angle"),
-    Input("elbow-shoulder-move", "force"),
-    Input("wrist-grip-move", "angle"),
-    Input("wrist-grip-move", "force")]
-)
-def elbow_shoulder_move(LED_angle, LED_force, elbow_shoulder_angle, elbow_shoulder_force, wrist_grip_angle, wrist_grip_force):
-    if elbow_shoulder_force < 0.5: #STOP
-        command_one = "STOP"
-    elif elbow_shoulder_angle < 135 and elbow_shoulder_angle > 45: # UP 
-        command_one = "ELBOW UP"
-    elif elbow_shoulder_angle < 315 and elbow_shoulder_angle > 225: #DOWN
-        command_one = "ELBOW DOWN"
-    elif elbow_shoulder_angle > 135 and elbow_shoulder_angle < 225: #LEFT
-        command_one = "SHOULDER UP"
-    elif elbow_shoulder_angle < 45 or elbow_shoulder_angle > 345: #RIGHT
-        command_one = "SHOULDER DOWN"
-    
-    if LED_force < 0.5: #STOP
-        command_two = "STOP"
-    elif LED_angle < 135 and LED_angle > 45: # UP 
-        command_two = "LED ON"
-    elif LED_angle < 315 and LED_angle > 225: #DOWN
-        command_two = "LED OFF"
-    elif LED_angle > 135 and LED_angle < 225: #LEFT
-        command_two = "BASE ROTATE LEFT"
-    elif LED_angle < 45 or LED_angle > 345: #RIGHT
-        command_two = "BASE ROTATE RIGHT"
-
-    if wrist_grip_force < 0.5: #STOP
-        command_three = "STOP"
-    elif wrist_grip_angle < 135 and wrist_grip_angle > 45: # UP 
-        command_three = "WRIST UP"
-    elif wrist_grip_angle < 315 and wrist_grip_angle > 225: #DOWN
-        command_three = "WRIST DOWN"
-    elif wrist_grip_angle > 135 and wrist_grip_angle < 225: #LEFT
-        command_three = "OPEN GRIP"
-    elif wrist_grip_angle < 45 or wrist_grip_angle> 345: #RIGHT
-        command_three = "CLOSE GRIP"
-    
-    text_monitor = ("-----CONTROL PANEL----\n\n" +
-                    "Right Joystick: " +
-                    command_one +
-                    "\nLeft Joystick: " +
-                    command_two +
-                    "\nBottom Joystick: " +
-                    command_three +
-                    "\n\n" +
-                    "---------READ ME---------\n" +
-                    "This application was made to " +
-                    "control the Robotic Arm Edge using " +
-                    "the USB interface package. This" + 
-                    " application can be controlled" +
-                    " wirelessly using WIFI. See it " + 
-                    "in action, by clicking " +
-                    "on the Dash DAQ logo and reading the " +
-                    "blog post titled, '"+
-                    "Robotic Arm Edge'."
-                    
-                    )
-    return text_monitor
 
 if __name__ == '__main__':
     app.run_server(debug=True)
