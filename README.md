@@ -33,29 +33,46 @@ and all of the required `pip` packages, as well as the package, will be installe
  
 ## How to use the app
 If you are running Windows 10, you will have a lot of trouble with the drivers. Follow the instructions at the [bottom of this page](https://github.com/artmg/MuGammaPi/wiki/Robotic-Arm) titled **Windows** to install working drivers for this app, and the required **roboarm** library.
-Here, you should put the command needed to run your app, and then the steps that the user should take to use it. You should include screenshots of the app running in your own browser to make it easier to follow along. 
 
-Then, show a step-by-step guide of how your app works, and what each control does.
+There are two versions of this application. A mock version for the user to play with, without any instruments connected, and a local version, that can be connected to a device.
 
-If possible, include screenshots of something in the app failing, and, if any, the steps that the user can take to correct the error.
+### Local Application
+If you would like to run the **local version**, please connect the **USB interface** of the Robotic Arm Edge to the USB port on your computer, and run in the command line:
 
-There are two versions of this application. A mock version for the user to play with without any instruments connected, and a local version, that can be connected to a device.
-
-If you would like to run the local version, please connect the device to the USB port on your computer, and run in the command line:
 ``` 
 python app.py
 ```
+![changefail](screenshots/pythonapp.jpg)
+
+and you should see this:
+
+![changefail](screenshots/runapp.JPG)
+
+Open the web address given to you in your browser and the application will be ready for use:
+
+![changefail](screenshots/openport.JPG)
 
 If the app is run, but the device is not connected you will see something like this:
 
+![changefail](screenshots/Capture.JPG)
 
 
-If you would like to run the mock version, run in the command line:
+### Mock Application
+If you would like to run the **mock version**, run in the command line:
 
 ```
-python app_mock.py demo
+python app_mock.py 
 ```
-A step by step guide with photos is provided below:
+
+![changefail](screenshots/pythonapp_mock.jpg)
+
+and you should see this:
+
+![changefail](screenshots/runmock.JPG)
+
+Open the web address given to you in your browser and the application will be ready for use:
+
+![changefail](screenshots/openport.JPG)
 
 ### Controls
 * Left Joystick: Moves base left and right. Turns LED on and off.
