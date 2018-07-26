@@ -11,13 +11,14 @@ server = app.server
 app.scripts.config.serve_locally = True
 
 
-# CSS Imports
-external_css = ["https://codepen.io/chriddyp/pen/bWLwgP.css",
-                "https://cdn.rawgit.com/matthewchan15/dash-css-style-sheets/adf070fa/banner.css",
-                "https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i",
-                "https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i",
-                "https://rawgit.com/matthewchan15/dash-sparki-icon-sheet/master/css/sparkibot.css",
-                "https://rawgit.com/matthewchan15/dash-css-style-sheets/master/pop-up.css"]
+# CSS Imports, Add CSS style sheets together
+external_css = [
+    "https://codepen.io/chriddyp/pen/bWLwgP.css",
+    "https://cdn.rawgit.com/matthewchan15/dash-css-style-sheets/adf070fa/banner.css",
+    "https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i",
+    "https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i",
+    "https://rawgit.com/matthewchan15/dash-css-style-sheets/master/pop-up.css",
+]
 
 
 for css in external_css:
@@ -26,29 +27,11 @@ for css in external_css:
 app.layout = html.Div(
     [
         html.Div(
-            id="container",
-            style={"background-color": "#119DFF"},
-
-            children=[
-               html.H2(
-                   "Dash DAQ: Robotic Arm Edge",
-               ),
-                html.A(
-                   html.Img(
-                       src="https://s3-us-west-1.amazonaws.com/plotly-tutorials/excel/dash-daq/dash-daq-logo-by-plotly-stripe+copy.png",
-                   ),
-                   href="http://www.dashdaq.io"
-               )
-
-            ],
-            className="banner"
-        ),
-        html.Div(
             [
                 html.Div(
                     id="dash-daq-remote-banner",
                     style={"position": "absolute",
-                           "top": "111px",
+                           "top": "70px",
                            "right": "-45px"},
                     children=[
                         html.A(
@@ -59,6 +42,15 @@ app.layout = html.Div(
                             href="http://www.dashdaq.io"
                         )
                     ]
+                ),
+                html.P(
+                    "Robotic Arm Edge",
+                    style={"position": "absolute",
+                           "top": "118px",
+                           "left": "307px",
+                           "color":"#506784",
+                           "font-size":"17px"},
+
                 ),
                 html.Div(
                     [
@@ -149,7 +141,7 @@ app.layout = html.Div(
                             ],  className="six columns", style={"paddingTop": "3%"}
                         ),
                     ], className="row", style={"width": "86%",
-                                               "top": "30%",
+                                               "top": "26%",
                                                "right": "4%",
                                                "position": "absolute"}
                 ),
@@ -226,7 +218,7 @@ app.layout = html.Div(
                       "height": "75%",
                       "width": "75%",
                       "marginLeft": "11%",
-                      "marginTop": "3%",
+                      "marginTop": "8%",
                       "box-shadow":"16px 10px 8px 0px #506784"}
         ),
         html.Div(
@@ -246,7 +238,7 @@ app.layout = html.Div(
                                       "border": "1px solid #A2B1C6",
                                       "border-radius": "20px",
                                                           "position": "absolute",
-                                                          "top": "264px",
+                                                          "top": "232px",
                                                           "left": "345px"}
                         )
                     ]
@@ -276,15 +268,15 @@ app.layout = html.Div(
                                            "font-size": "2em"}
                                 ),
                                 html.H6(
-                                    "This application was made to " +
-                                    "control the Robotic Arm Edge using " +
-                                    "the USB interface package. This" +
-                                    " application can be controlled" +
-                                    " wirelessly using WI-FI. See it " +
-                                    "in action, by clicking " +
-                                    "on the Dash DAQ logo and reading the " +
-                                    "blog post titled, '" +
-                                    "Robotic Arm Edge'."
+                                    "This application was made to \
+                                    control the Robotic Arm Edge using \
+                                    the USB interface package. This \
+                                    application can be controlled \
+                                    wirelessly using WI-FI. See it \
+                                    in action, by clicking \
+                                    on the Dash DAQ logo and reading the \
+                                    blog post titled, '\
+                                    Robotic Arm Edge'."
                                 )
                             ]
                         )
@@ -294,7 +286,7 @@ app.layout = html.Div(
                     "Read Me",
                     style={
                         "position": "absolute",
-                        "top": "275px",
+                        "top": "238px",
                         "left": "339px",
                         "font-size": "1.1rem"}
                 )
@@ -309,25 +301,22 @@ app.layout = html.Div(
             ], style={"visibility": "hidden"}
         )
     ], style={'padding': '0px 10px 0px 10px',
-              'marginLeft': 'auto',
-              'marginRight': 'auto',
+              'margin': 'auto',
               "width": "693px",
               'height': "560px",
-              'boxShadow': '0px 0px 5px 5px rgba(204,204,204,0.4)',
               "position": "absolute",
               "top": "0",
               "bottom": "0",
               "left": "0",
-              "right": "0"}
+              "right": "0",
+              "border":"5px solid #A2B1C6"}
 )
 
 # Base Led move
-
-
 @app.callback(
     Output("LED-base-hold", "children"),
-    [Input("LED-base-move", "angle"),
-     Input("LED-base-move", "force")]
+    [Input("LED-base-move", "angle"), 
+    Input("LED-base-move", "force")]
 )
 def elbow_shoulder_move(angle, force):
     if angle < 135 and angle > 45:  # UP
@@ -338,14 +327,14 @@ def elbow_shoulder_move(angle, force):
 
 
 @app.callback(
-    Output("LED-state", "color"),
+    Output("LED-state", "color"), 
     [Input("LED-base-hold", "children")]
 )
 def LED_ON_OFF(LED_color):
     return LED_color
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(debug=True)
 
-# host="0.0.0.0"
+
