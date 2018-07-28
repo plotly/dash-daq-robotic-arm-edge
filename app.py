@@ -442,7 +442,7 @@ def elbow_shoulder_move(angle, force):
             arm.base.rotate_counter(None)
         elif angle < 45 or angle > 345:  # RIGHT
             arm.base.rotate_clock(None)
-    return
+        return
     except ValueError:
         pass
 
