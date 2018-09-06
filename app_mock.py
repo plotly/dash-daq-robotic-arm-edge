@@ -3,13 +3,17 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_daq as daq
 from dash.dependencies import State, Input, Output
+import os
+from flask import Flask,redirect
 
-
-app = dash.Dash(__name__)
-
+# app = dash.Dash(__name__)
+app = Flask(__name__)
 server = app.server
 app.scripts.config.serve_locally = True
 
+@app.route('/')
+def redirecting():
+    return redirect("https://dash-gallery.plotly.host/my-demo-app")
 
 # CSS Imports, Add CSS style sheets together
 external_css = [
@@ -399,4 +403,4 @@ def LED_ON_OFF(LED_color):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run()
