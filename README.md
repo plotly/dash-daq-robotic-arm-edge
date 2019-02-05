@@ -1,7 +1,7 @@
 # Dash-DAQ-Robotic-Arm-Edge
 
 ## Introduction
-An application that allows the user to control an robotic arm known as the [Robotic Arm Edge](https://www.adafruit.com/product/548). [Play with the app here](https://dash-daq-robotic-arm-edge.herokuapp.com/) and learn more about this application from our [blog entry](https://www.dashdaq.io/control-a-robotic-arm-in-python). 
+An application that allows the user to control an robotic arm known as the [Robotic Arm Edge](https://www.adafruit.com/product/548). [Play with the app here](https://dash-gallery.plotly.host/dash-daq-robotic-arm) and learn more about this application from our [blog entry](https://www.dashdaq.io/control-a-robotic-arm-in-python). 
 
 
 ### Robotic Arm Edge
