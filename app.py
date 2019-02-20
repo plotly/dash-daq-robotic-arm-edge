@@ -9,7 +9,6 @@ app = dash.Dash(__name__)
 
 server = app.server
 
-
 arm = Arm()
 vendor = 0x1267
 bmRequestType = 0x40
