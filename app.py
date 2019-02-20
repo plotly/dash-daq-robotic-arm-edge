@@ -8,7 +8,6 @@ from roboarm import Arm
 app = dash.Dash(__name__)
 
 server = app.server
-app.scripts.config.serve_locally = True
 
 
 arm = Arm()
