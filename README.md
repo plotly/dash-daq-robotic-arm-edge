@@ -1,5 +1,12 @@
 # Dash-DAQ-Robotic-Arm-Edge
 
+<div align="center">
+  <a href="https://dash.plotly.com/project-maintenance">
+    <img src="https://dash.plotly.com/assets/images/maintained-by-plotly.png" width="400px" alt="Maintained by Plotly">
+  </a>
+</div>
+
+
 ## Introduction
 An application that allows the user to control an robotic arm known as the [Robotic Arm Edge](https://www.adafruit.com/product/548). [Play with the app here](https://dash-gallery.plotly.host/dash-daq-robotic-arm) and learn more about this application from our [blog entry](https://www.dashdaq.io/control-a-robotic-arm-in-python). 
 
